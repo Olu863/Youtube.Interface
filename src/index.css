@@ -8,6 +8,7 @@
 body {
   background: #0f0f0f;
   color: #fff;
+  overflow-x: hidden;
 }
 
 /* SIDEBAR */
@@ -66,10 +67,10 @@ body {
 }
 
 /* MAIN */
-.main {
-  padding: 20px;
+ .main {
   margin-left: 75px;
-}
+  padding-top: 120px;
+ }
 
 /* NAVBAR */
 .navbar {
