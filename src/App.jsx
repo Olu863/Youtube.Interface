@@ -81,6 +81,8 @@ export default function App() {
     });
   }, [activeTag, activeSection, searchQuery]);
 
+  const visibleVideos = filteredVideos.slice(0, 6);
+
   return (
     <>
       <Sidebar activeSection={activeSection} onSelectSection={setActiveSection} />
@@ -88,18 +90,18 @@ export default function App() {
         <Navbar searchQuery={searchQuery} onSearchQueryChange={setSearchQuery} />
         <Tags activeTag={activeTag} onTagChange={setActiveTag} />
         <div className="section-header">
-          {activeSection} • {filteredVideos.length} videos
+          {activeSection} • {visibleVideos.length} videos
         </div>
         {activeSection === 'Shorts' ? (
-          <ShortsFeed videos={filteredVideos} />
+          <ShortsFeed videos={visibleVideos} />
         ) : (
           <>
             <div className="search-summary">
               {searchQuery
-                ? `Search results for "${searchQuery}" (${filteredVideos.length})`
-                : `Showing ${filteredVideos.length} videos`}
+                ? `Search results for "${searchQuery}" (${visibleVideos.length})`
+                : `Showing ${visibleVideos.length} videos`}
             </div>
-            <VideoGrid videos={filteredVideos} />
+            <VideoGrid videos={visibleVideos} />
           </>
         )}
       </div>

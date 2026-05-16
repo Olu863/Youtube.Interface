@@ -1,13 +1,15 @@
 import VideoCard from './VideoCard';
 
 export default function VideoGrid({ videos }) {
-  if (!videos || videos.length === 0) {
+  const videosToShow = videos?.slice(0, 6) ?? [];
+
+  if (!videosToShow.length) {
     return <div className="videos">No videos match your search or selected tag.</div>;
   }
 
   return (
     <div className="videos">
-      {videos.map((video) => (
+      {videosToShow.map((video) => (
         <VideoCard key={video.id} video={video} />
       ))}
     </div>
